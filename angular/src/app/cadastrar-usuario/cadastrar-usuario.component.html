@@ -1,0 +1,30 @@
+<h1>Cadastrar um novo usuário</h1>
+<hr/>
+<form name="formulario" (ngSubmit)="cadastrar()" [formGroup]="formulario">
+  <div *ngIf="mensagemOk">
+    <div class="alert alert-success">
+      {{ mensagemOk }}
+    </div>
+  </div>
+  <div *ngIf="!mensagemOk">
+    <div *ngIf="erro">
+      <div class="alert alert-danger" role="alert">
+          {{ erro }}
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputNome">Nome</label>
+      <input class="form-control" type="text" name="inputNome" id="nome" placeholder="Informe seu nome" formControlName="nome">
+    </div>
+    <div class="form-group">
+      <label for="inputUsuario">Usuário</label>
+      <input class="form-control" type="text" name="inputUsuario" id="usuario" placeholder="Informe seu usuário" formControlName="usuario">
+    </div>
+    <div class="form-group">
+      <label for="inputSenha">Senha</label>
+      <input class="form-control" type="password" name="inputSenha" id="senha" placeholder="Informe uma senha" formControlName="senha">
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+  </div>
+</form>
+<a href="/">Voltar à página inicial</a>

@@ -1,0 +1,32 @@
+<h1>Cadastrar uma nova equipe</h1>
+<hr/>
+<form name="formGroup" (ngSubmit)="salvar()" [formGroup]="formGroup">
+  <div *ngIf="mensagemErro">
+    <div class="alert alert-danger" role="alert">
+        {{ mensagemErro }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputNome">Nome</label>
+    <input class="form-control" type="text" name="inputNome" id="nome" placeholder="Informe o nome da equipe" formControlName="nome">
+  </div>
+  <div class="form-group">
+    <label for="inputSigla">Sigla</label>
+    <input class="form-control" type="text" name="inputSigla" id="sigla" placeholder="Informe a sigla da equipe" formControlName="sigla">
+  </div>
+  <div class="form-group">
+    <label for="inputPonto">Pontuação</label>
+    <input class="form-control" type="number" name="inputPonto" id="ponto" placeholder="Informe a pontuação da equipe" formControlName="pontos">
+  </div>
+  <div class="form-group">
+    <label for="inputEscudo">Escudo</label>
+    <input class="form-control-file" type="file" name="inputEscudo" id="escudo" (change)="selecionarArquivo($event)">
+  </div>
+  <div *ngIf="id == 0">
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+  </div>
+  <div *ngIf="id != 0">
+    <button type="submit" class="btn btn-primary">Editar</button>
+  </div>
+</form>
+<a href="/tabela">Voltar à tabela</a>

@@ -1,0 +1,50 @@
+<div *ngIf="erro">
+  <div class="alert alert-danger" role="alert">
+    {{ erro }}
+  </div>
+</div>
+<div *ngIf="!erro">
+    <a href="/equipe">Adicionar equipe</a>
+  <div *ngIf="equipes">
+    <table class="table table-striped table-hover">
+      <thead>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Sigla</th>
+        <th>Pontos</th>
+        <th>Escudo</th>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of equipes; let pos = index">
+          <td>{{ pos + 1 }}º</td>
+          <td>{{ e.nome }}</td>
+          <td>{{ e.sigla }}</td>
+          <td>{{ e.pontos }}</td>
+          <td>
+            <div class="text-center">
+              <img [src]="pathEscudo(e)"  height="42" width="42">
+            </div>
+            <!--a [href]="pathEscudo(e)">{{ e.escudo }}</a-->
+          </td>
+          <td>
+            <div class="text-center">
+              <button class="btn btn-primary" (click)="editar(e.id)">Editar</button>
+            </div>
+          </td>
+          <td>
+            <div class="text-center">
+              <button class="btn btn-danger" (click)="apagar(e.id)">X</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="!equipes">
+    <div class="alert alert-primary">
+      Nenhuma equipe encontrada!
+    </div>
+  </div>
+</div>
